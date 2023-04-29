@@ -5,6 +5,15 @@ see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
 
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#ifdef TAPPING_TERM 
+#undef TAPPING_TERM
+#endif
+#undef TAPPING_TERM_PER_KEY
+#define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
+
 #if defined(KEYBOARD_sofle_rev1)
 // Add RGB underglow and top facing lighting
 #    define RGB_DI_PIN D3
@@ -32,4 +41,16 @@ for more options.
 #        define RGBLIGHT_VAL_STEP 17
 #    endif
 #endif
-#define DYNAMIC_KEYMAP_LAYER_COUNT 6
+
+
+// Mouse key speed and acceleration.
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY          0
+#undef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL       16
+#undef MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELAY    0
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED      6
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX    64
